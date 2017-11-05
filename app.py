@@ -187,7 +187,7 @@ def get_next_arrival_time():
 
         marta_station = json_dict['result']['parameters']['marta_station']
         if amenity not in map_of_marta_stations_by_amenitie:
-            response['speech'] = "amnenity not found"
+            response['speech'] = "amenity not found"
             response['displayText'] = "amenity not found"
             return json.dumps(response)
             
@@ -196,18 +196,67 @@ def get_next_arrival_time():
         if marta_station == "":
             
             string_of_all_stations = ', '.join(list_of_marta_stations_with_amenity)
-            response['speech'] = "these are the marta stations with this amnenity " + string_of_all_stations
-            response['displayText'] = "these are the marta stations with this amnenity " + string_of_all_stations
+            response['speech'] = "these are the marta stations with bike repairs centers " + string_of_all_stations
+            response['displayText'] = "these are the marta stations with bike repair centers " + string_of_all_stations
 
         elif marta_station in list_of_marta_stations_with_amenity:
-            response['speech'] = marta_station + "has this amnenity"
-            response['displayText'] = marta_station + "has this amnenity"
+            response['speech'] = marta_station + "has this amenity"
+            response['displayText'] = marta_station + "has this amenity"
 
         else:
-            response['speech'] = marta_station + " does not have this amnenity"
-            response['displayText'] = marta_station + "has this amnenity"
+            response['speech'] = marta_station + " does not have this amenity"
+            response['displayText'] = marta_station + "has this amenity"
 
         return json.dumps(response)
+
+    elif action == "bus_routes":
+        map_of_bus_routes_by_marta_stations = {
+
+    "ARTS CENTER STATION": ['Route 37 Atlantic Station' , 'Route 110 The Peach'],
+
+
+
+    'BUCKHEAD STATION': ['Route 110 The Peach'],
+
+
+
+    'MIDTOWN STATION': ['Route 12 Cumberland', 'Route 27 Ansley Mall', 'Route 36 Virginia Highland', 'Route 109 Boulevard'],
+
+
+
+    "FIVE POINTS STATION": ['Route 3 Martin Luther King', 'Route 13 Hunter Hills', 'Route 16 North Highland', 'Route 32 Bouldercrest', 'Route 42 Pryor Rd', 'Route 49 McDonough Blvd', 'Route 51 Joseph E Boone Blvd', '55 Jonesboro Rd/Hutchens Rd/Forest Pkwy'],
+
+
+
+    'WEST END STATION': ['Route 67 Dixie Hills', 'route 68 Donnelly', 'Route 71 Cascade', 'route 81 Adams Park', 'Route 94 Northside Dr', 'route 95 Hapeville']
+
+
+    }
+        marta_station = json_dict['result']['parameters']['marta_station']
+
+        response = {}
+        response['source'] = "marta_api"
+
+        if marta_station == "":
+
+            stations_string_list = ", ".join(map_of_bus_routes_by_marta_stations.keys())
+            response['speech'] = "supported stations are " + stations_string_list
+            response['displayText'] = "supported stations are " + stations_string_list
+
+
+        if marta_station not in map_of_bus_routes_by_marta_stations.keys():
+            response['speech'] = "Sorry this " + marta_station  + " is currently not supported"
+            response['displayText'] = "Sorry this " + marta_station  + " is currently not supported"
+        
+        else:
+            routes_string = ', '.join( map_of_bus_routes_by_marta_stations[marta_station] )
+
+            response['speech'] = "Routes for " + marta_station + " " + routes_string
+            response['displayText'] = "Routes for " + marta_station + " " + routes_string
+
+        return json.dumps(response)
+
+
 
         
 
