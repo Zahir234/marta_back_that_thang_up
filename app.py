@@ -199,7 +199,7 @@ def get_next_arrival_time():
             response['displayText'] = marta_station + "has this amnenity"
 
         else:
-            response['speech'] = marta_station + " does not this amnenity"
+            response['speech'] = marta_station + " does not have this amnenity"
             response['displayText'] = marta_station + "has this amnenity"
 
         return json.dumps(response)
