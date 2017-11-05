@@ -153,7 +153,7 @@ def get_next_arrival_time():
     elif action == "bathroom":
         marta_station = json_dict['result']['parameters']['marta_station']
 
-        list_of_marta_stations_with_bathrooms = ['BROOKHAVEN STATION','DUNWOODY STATION','KENSINGTON STATION','LENOX STATION']
+        list_of_marta_stations_with_bathrooms = ["NORTH SPRINGS STATION", "DORAVILLE STATION", "LINDBERGH STATION", "ARTS CENTER STATION",'KENSINGTON STATION', "AVONDALE STATION", "INDIAN CREEK STATION", "FIVE POINTS STATION", "PEACHTREE CENTER STATION", "HAMILTON E HOLMES STATION", "WEST END STATION", "COLLEGE PARK STATION"]
 
         response = {}
         response['source'] = 'marta_api'
