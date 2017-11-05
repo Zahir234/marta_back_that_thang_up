@@ -1,0 +1,6 @@
+Flask
+google_api_python_client
+shortuuid
+google-cloud-datastore
+requests-toolbelt
+flask-cors

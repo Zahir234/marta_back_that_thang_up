@@ -1,0 +1,6 @@
+indexes:
+
+- kind: exams
+  properties:
+  - name: school
+  - name: school_class
