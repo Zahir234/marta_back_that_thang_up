@@ -186,6 +186,11 @@ def get_next_arrival_time():
 
 
         marta_station = json_dict['result']['parameters']['marta_station']
+        if amenity not in map_of_marta_stations_by_amenitie:
+            response['speech'] = "amnenity not found"
+            response['displayText'] = "amenity not found"
+            return json.dumps(response)
+            
         list_of_marta_stations_with_amenity = map_of_marta_stations_by_amenitie[amenity]
 
         if marta_station == "":
